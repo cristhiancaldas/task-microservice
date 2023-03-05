@@ -6,9 +6,7 @@ pipeline {
   stages {
     stage ('Unit Test') {
             steps {
-                container ('maven') {
                     sh 'mvn clean test'
-                 }
             }  
     }
     stage ('Build Maven') {
