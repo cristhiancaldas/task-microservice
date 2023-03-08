@@ -16,17 +16,17 @@ pipeline {
     }
     stage('SonarQube analysis') {
         environment {
-          SCANNER_HOME = tool 'SonarQube'
-        }
+            SCANNER_HOME = tool 'SonarQubeScanner'
+            ORGANIZATION = "cristhian-github"
+            PROJECT_NAME = "cristhian_jenkins-pipeline-as-code"
+          }
         steps {
-        withSonarQubeEnv(credentialsId: 'sonarQube-token') {
-             sh '''$SCANNER_HOME/bin/sonar-scanner \
-             -Dsonar.projectKey=projectKey \
-             -Dsonar.projectName=task-microservices \
-             -Dsonar.sources=src/ \
-             -Dsonar.java.binaries=target/classes/ \
-             -Dsonar.exclusions=src/test/java/****/*.java'''
-           }
+            withSonarQubeEnv( installationName: 'SonarQubeServer',credentialsId: 'sonarQube-token') {
+                   sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
+                   -Dsonar.java.binaries=build/classes/java/ \
+                   -Dsonar.projectKey=$PROJECT_NAME \
+                   -Dsonar.sources=.'''
+               }
          }
     }
 
