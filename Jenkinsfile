@@ -4,16 +4,31 @@ pipeline {
     maven 'MAVEN_HOME' 
   }
   stages {
+    stage ('Build project') {
+                steps {
+                        sh 'mvn install'
+                }
+        }
     stage ('Unit Test') {
             steps {
-                    sh 'mvn clean test'
+                    sh 'mvn test'
             }  
     }
-    stage ('Build Maven') {
-      steps {
-        sh 'mvn clean package'
-      }
+    stage('SonarQube analysis') {
+        environment {
+          SCANNER_HOME = tool 'SonarQube'
+        }
+        steps {
+        withSonarQubeEnv(credentialsId: 'sonarQube-token') {
+             sh '''$SCANNER_HOME/bin/sonar-scanner \
+             -Dsonar.projectKey=projectKey \
+             -Dsonar.projectName=task-microservices \
+             -Dsonar.sources=src/ \
+             -Dsonar.java.binaries=target/classes/ \
+             -Dsonar.exclusions=src/test/java/****/*.java'''
+           }
+         }
     }
-    
+
   }
 }
