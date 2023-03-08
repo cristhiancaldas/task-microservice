@@ -11,10 +11,18 @@
 	<groupId>com.app</groupId>
 	<artifactId>task-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>task</name>
+	<name>Task-Microservices</name>
 	<description>Project Task</description>
 	<properties>
 		<java.version>11</java.version>
+		<sonar.coverage.exclusions>
+			src/main/java/com/app/taskmicroservice/dto/ResponseDTO.java,
+			src/main/java/com/app/taskmicroservice/dto/TaskDto.java,
+			src/main/java/com/app/taskmicroservice/exceptions/ExceptionHandler.java,
+			src/main/java/com/app/taskmicroservice/exceptions/ToDoExceptions.java,
+			src/main/java/com/app/taskmicroservice/entity/Task.java,
+			src/main/java/com/app/taskmicroservice/TaskApplication.java
+		</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -36,12 +44,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.26</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.0</version>
 		</dependency>
 	</dependencies>
 
@@ -50,6 +62,30 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.8.0.2131</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

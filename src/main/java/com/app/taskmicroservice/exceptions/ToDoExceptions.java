@@ -6,9 +6,9 @@ import org.springframework.http.HttpStatus;
 @Data
 public class ToDoExceptions extends RuntimeException{
 
-    private String message;
+    private final String message;
 
-    private HttpStatus httpStatus;
+    private final HttpStatus httpStatus;
 
     public ToDoExceptions(String message,HttpStatus httpStatus){
         this.message=message;
