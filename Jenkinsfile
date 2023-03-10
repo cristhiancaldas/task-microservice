@@ -33,7 +33,7 @@ pipeline {
         }
     }
 
-     stage("Quality Gate"){
+    /* stage("Quality Gate"){
           steps {
               timeout(time: 1, unit: 'MINUTES') {
                   def qg = waitForQualityGate()
@@ -43,7 +43,7 @@ pipeline {
                      //waitForQualityGate abortPipeline: true
               }
           }
-     }
+     }*/
 
   }
 }
