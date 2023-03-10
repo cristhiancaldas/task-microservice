@@ -23,10 +23,7 @@ pipeline {
           }
         steps {
             withSonarQubeEnv( installationName: 'SonarQubeServer',credentialsId: 'sonarQube-token') {
-                   sh '''$SCANNER_HOME/bin/sonar-scanner -Dsonar.organization=$ORGANIZATION \
-                   -Dsonar.java.binaries= . \
-                   -Dsonar.projectKey=$PROJECT_NAME \
-                   -Dsonar.sources= task-microservice/src/main '''
+                   sh '''$SCANNER_HOME/bin/sonar-scanner  '''
                }
          }
     }
