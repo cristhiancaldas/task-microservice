@@ -27,19 +27,10 @@ pipeline {
              -Dsonar.projectKey = projectKey \
              -Dsonar.projectName = task-microservices \
              -Dsonar.sources = src/main \
-             -Dsonar.java.binaries = target/classes \
+             -Dsonar.java.binaries = target/classes '''
            }
          }
     }
 
   }
 }
-
-/*
-sh "${tool("sonarqube")}/bin/sonar-scanner \
-           -Dsonar.projectKey=test-node-js \
-           -Dsonar.sources=. \
-           -Dsonar.css.node=. \
-           -Dsonar.host.url=http://your-ip-here:9000 \
-           -Dsonar.login=your-generated-token-from-sonarqube-container"
-*/
