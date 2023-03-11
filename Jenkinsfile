@@ -20,7 +20,7 @@ pipeline {
         environment {
             SCANNER_HOME = tool 'SonarQubeScanner'
             ORGANIZATION = "cristhian-github"
-            PROJECT_NAME = "cristhian_jenkins-pipeline-as-code"
+            PROJECT_NAME = "cristhian_jenkins-pipeline"
         }
         steps {
             withSonarQubeEnv( installationName: 'SonarQubeServer',credentialsId: 'sonarQube-token') {
