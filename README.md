@@ -32,5 +32,3 @@ Install my-project with maven
 ```
 
 ## Authors
-
-![](https://github.com/cristhiancaldas/microservices/tree/master/images/image-gitHub.png)
