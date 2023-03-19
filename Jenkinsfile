@@ -25,7 +25,7 @@ pipeline {
         steps {
             withSonarQubeEnv( installationName: 'SonarQubeServer',credentialsId: 'sonarQube-token') {
             sh '''$SCANNER_HOME/bin/sonar-scanner \
-             -Dproject.settings=sonar-project.properties
+             -Dproject.settings=sonar-project.properties '''
             }
         }
     }
