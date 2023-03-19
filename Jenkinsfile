@@ -7,7 +7,7 @@ pipeline {
    stages {
       stage ('Build project') {
                 steps {
-                        sh 'mvn clean'
+                        sh 'mvn clean build'
                 }
       }
       stage ('Unit Test') {
