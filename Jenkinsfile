@@ -19,8 +19,6 @@ pipeline {
     stage('SonarQube analysis') {
         environment {
             SCANNER_HOME = tool 'SonarQubeScanner'
-            ORGANIZATION = "cristhian-github-microservices"
-            PROJECT_NAME = "cristhian_jenkins-pipelines"
         }
         steps {
             withSonarQubeEnv( installationName: 'SonarQubeServer',credentialsId: 'sonarQube-token') {
